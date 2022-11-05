@@ -1,0 +1,117 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+    <h2 class="mt-4 text-muted">Importé le model de fichier Excel</h2>
+    {{ form_start(importForm) }}
+    {{ form_row(importForm.import) }}
+    <div>
+        <button type="submit" class="btn btn-primary">Importer</button>
+    </div>
+    {{ form_end(importForm) }}
+
+    <div class="row mt-5 ">
+        <div class="col-md-6">
+            <h2 class="text-muted">Tableau des données </h2>
+        </div>
+        <div class="col-md-6 text-end">
+            <a href="{{ path('app_import_clear_data') }}" class="btn btn-sm btn-danger">Supprimez les données</a>
+        </div>
+    </div>
+
+    <div class="mt-4" style="width:100%; overflow: auto">
+        <table class="table table-striped" style="width:5000px !important">
+            <thead>
+            <tr>
+                <th>Compte Affaire</th>
+                <th>Compte évènement (Veh)</th>
+                <th>Compte dernier évènement (Veh)</th>
+                <th>Numéro de fiche</th>
+                <th>Libellé civilité</th>
+                <th>Propriétaire actuel du véhicule</th>
+                <th>Nom</th>
+                <th>Prénom</th>
+                <th>N° et Nom de la voie</th>
+                <th>Complément adresse 1</th>
+                <th>Code postal</th>
+                <th>Ville</th>
+                <th>Téléphone domicile</th>
+                <th>Téléphone portable</th>
+                <th>Téléphone job</th>
+                <th>Email</th>
+                <th>Date de mise en circulation</th>
+                <th>Date achat (date de livraison)</th>
+                <th>Date dernier évènement (Veh)</th>
+                <th>Libellé marque (Mrq)</th>
+                <th>Libellé modèle (Mod)</th>
+                <th>Version</th>
+                <th>VIN</th>
+                <th>Immatriculation</th>
+                <th>Type de prospect</th>
+                <th>Kilométrage</th>
+                <th>Libellé énergie (Energ)</th>
+                <th>Vendeur VN</th>
+                <th>Vendeur VO</th>
+                <th>Commentaire de facturation (Veh)</th>
+                <th>Type VN VO</th>
+                <th>Numéro de dossier VN VO</th>
+                <th>Intermediaire de vente VN</th>
+                <th>Date évènement (Veh)</th>
+                <th>Origine évènement (Veh)</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for data in xlsData %}
+                <tr>
+                    <td>{{ data.compteAffaire }}</td>
+                    <td>{{ data.compteEvenement }}</td>
+                    <td>{{ data.compteDernierEvenement }}</td>
+                    <td>{{ data.numeroFiche }}</td>
+                    <td>{{ data.libelleCivilite }}</td>
+                    <td>{{ data.proprietaireActuelVehicule }}</td>
+                    <td>{{ data.nom }}</td>
+                    <td>{{ data.prenom }}</td>
+                    <td>{{ data.numeroNomVoie }}</td>
+                    <td>{{ data.complementAdresse }}</td>
+                    <td>{{ data.codePostal }}</td>
+                    <td>{{ data.ville }}</td>
+                    <td>{{ data.telephone }}</td>
+                    <td>{{ data.telephonePortable }}</td>
+                    <td>{{ data.telephoneJob }}</td>
+                    <td>{{ data.email }}</td>
+                    <td>{{ data.dateMiseEnCirculation|date('d/m/y') }}</td>
+                    <td>{{ data.dateAchat|date('d/m/y') }}</td>
+                    <td>{{ data.dateDernierEvenement|date('d/m/y') }}</td>
+                    <td>{{ data.libelleMarque }}</td>
+                    <td>{{ data.libelleModele }}</td>
+                    <td>{{ data.version }}</td>
+                    <td>{{ data.vin }}</td>
+                    <td>{{ data.immatriculation }}</td>
+                    <td>{{ data.typeProspect }}</td>
+                    <td>{{ data.kilometrage }}</td>
+                    <td>{{ data.libelleEnergie }}</td>
+                    <td>{{ data.vendeur }}</td>
+                    <td>{{ data.vendeur }}</td>
+                    <td>{{ data.commentaireFacturation }}</td>
+                    <td>{{ data.typeVn }}</td>
+                    <td>{{ data.numeroDossier }}</td>
+                    <td></td>
+                    <td>{{ data.dateEvenement|date('d/m/y') }}</td>
+                    <td>{{ data.origineEvenement }}</td>
+                </tr>
+            {% else %}
+                <tr>
+                    <td colspan="20" class="ps-5">
+                        Pas de données à afficher pour le moment
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+
+        </table>
+    </div>
+    <div class="navigation mt-4">
+        {{ knp_pagination_render(xlsData) }}
+    </div>
+
+
+
+{% endblock %}
