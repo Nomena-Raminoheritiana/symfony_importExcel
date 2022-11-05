@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 {% block body %}
-    <h2 class="mt-4 text-muted">Importé le model de fichier Excel</h2>
+    <h2 class="mt-4 text-muted">Importé le model de fichier Excel  <a href="{{ asset('TestTechnique-Import.xlsx') }}" class="fs-6">( TestTechnique-Import.xlsx )</a></h2>
     {{ form_start(importForm) }}
     {{ form_row(importForm.import) }}
     <div>
