@@ -1,0 +1,4 @@
+- Configurer le fichier .env
+- Créer la base de donnée : `php bin/console d:d:c`
+- Executer la migration : `php bin/console d:m:m`
+- Lancer l'application : `symfony server:start` ou `php localhost:port -S -T /public`
