@@ -1,6 +1,10 @@
 {% extends 'base.html.twig' %}
 {% block body %}
     <h2 class="mt-4 text-muted">Importé le model de fichier Excel  <a href="{{ asset('TestTechnique-Import.xlsx') }}" class="fs-6">( TestTechnique-Import.xlsx )</a></h2>
+    <p>
+        <small>  Si vous êtes sous Linux, vérifiez bien les droits d'écriture <br>
+        L'import créera un dossier <strong>/import/excel</strong> à la racine du projet.</small>
+    </p>
     {{ form_start(importForm) }}
     {{ form_row(importForm.import) }}
     <div>
