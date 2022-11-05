@@ -51,6 +51,8 @@ class ImportController extends AbstractController
                 $data = $this->spreadSheetService->readXls($this->directoryManagement->getExcelImportDirectory().DIRECTORY_SEPARATOR.$fileName);
                 $this->xlsDataManager->saveData($data);
                 $this->addFlash('success', 'Import effectué avec succès');
+            } else {
+                $this->addFlash('danger', 'Une erreur est survenu lors de l\'import');
             }
         }
 
